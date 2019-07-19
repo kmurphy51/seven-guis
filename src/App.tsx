@@ -1,25 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route } from 'react-router';
+import { BrowserRouter, NavLink } from 'react-router-dom';
+
+import Counter from './components/counter';
+import TempConverter from './components/tempConverter';
+import FlightBooker from './components/flightBooker';
+
 import './App.css';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <nav>
+          <NavLink to="/counter">Counter</NavLink>
+          <NavLink to="/tempConverter">Temperature Converter</NavLink>
+          <NavLink to="/flightBooker">Flight Booker</NavLink>
+        </nav>
+        <main>
+          <Route path="/counter" component={Counter}/>
+          <Route path="/tempConverter" component={TempConverter}/>
+          <Route path="/flightBooker" component={FlightBooker}/>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
 
